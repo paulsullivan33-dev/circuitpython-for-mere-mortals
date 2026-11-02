@@ -1,0 +1,43 @@
+# t07 - failures, recorded as met
+
+$ timeout 30 circup list
+Auto locating USB Disk based device failed. Please specify --path argument or ensure your device is connected and mounted under the name CIRCUITPY.
+Could not find a connected CircuitPython device.
+(exit 1)
+
+$ timeout 60 circup --path drive1 install --py adafruit_no_such_module_xyz
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Using latest bundle for adafruit/Adafruit_CircuitPython_Bundle (20261031).
+Using latest bundle for adafruit/CircuitPython_Community_Bundle (20261008).
+Searching for dependencies for: ['adafruit_no_such_module_xyz']
+WARNING:
+	adafruit_no_such_module_xyz is not a known CircuitPython library.
+Ready to install: []
+
+(exit 0)
+
+$ circup --path drive1 uninstall adafruit_ticks -y   (there is no -y)
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Usage: circup uninstall [OPTIONS] [MODULE]...
+Try 'circup uninstall --help' for help.
+
+Error: No such option '-y'.
+(exit 2)
+
+$ timeout 60 circup --path drive1 example adafruit_bme280
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Error: bme280 was not found in any local bundle examples.
+(exit 0)
+
+$ timeout 30 circup --path no-such-folder list
+Usage: circup [OPTIONS] COMMAND [ARGS]...
+Try 'circup --help' for help.
+
+Error: Invalid value for '--path': Directory 'no-such-folder' does not exist.
+(exit 2)

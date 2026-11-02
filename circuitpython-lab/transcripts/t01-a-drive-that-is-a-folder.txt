@@ -1,0 +1,35 @@
+# t01 - a CIRCUITPY drive, imitated by a folder
+
+$ find drive1 -type f | sort
+drive1/boot_out.txt
+drive1/code.py
+
+$ cat drive1/boot_out.txt
+Adafruit CircuitPython 9.2.8 on 2025-01-01; Generic Board with samd51
+Board ID:generic_board
+UID:0123456789ABCDEF
+
+$ timeout 60 circup --path drive1 freeze
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Using latest bundle for adafruit/Adafruit_CircuitPython_Bundle (20261031).
+Using latest bundle for adafruit/CircuitPython_Community_Bundle (20261008).
+No modules found on the device.
+(exit 0)
+
+$ timeout 60 circup bundle-show
+Auto locating USB Disk based device failed. Please specify --path argument or ensure your device is connected and mounted under the name CIRCUITPY.
+Using latest bundle for adafruit/Adafruit_CircuitPython_Bundle (20261031).
+Using latest bundle for adafruit/CircuitPython_Community_Bundle (20261008).
+adafruit/Adafruit_CircuitPython_Bundle
+    https://github.com/adafruit/Adafruit_CircuitPython_Bundle
+    version = 20261031
+    available versions:
+        20261031
+adafruit/CircuitPython_Community_Bundle
+    https://github.com/adafruit/CircuitPython_Community_Bundle
+    version = 20261008
+    available versions:
+        20261008
+(exit 0)

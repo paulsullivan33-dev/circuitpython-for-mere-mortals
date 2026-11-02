@@ -1,0 +1,62 @@
+# t02 - installing libraries with circup (source form, --py)
+
+$ timeout 180 circup --path drive1 install --py adafruit_ticks
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Using latest bundle for adafruit/Adafruit_CircuitPython_Bundle (20261031).
+Using latest bundle for adafruit/CircuitPython_Community_Bundle (20261008).
+Searching for dependencies for: ['adafruit_ticks']
+Ready to install: ['adafruit_ticks']
+
+Installed 'adafruit_ticks'.
+(exit 0)
+
+$ timeout 180 circup --path drive1 install --py -r /home/hatch/workspace/circuitpython-for-mere-mortals/circuitpython-lab/requirements.txt
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Using latest bundle for adafruit/Adafruit_CircuitPython_Bundle (20261031).
+Using latest bundle for adafruit/CircuitPython_Community_Bundle (20261008).
+Searching for dependencies for: ['adafruit_bme280', 'adafruit_ticks']
+Ready to install: ['adafruit_bme280', 'adafruit_bus_device', 'adafruit_ticks']
+
+Installed 'adafruit_bme280'.
+Installed 'adafruit_bus_device'.
+'adafruit_ticks' is already installed.
+(exit 0)
+
+$ find drive1/lib -type f | sort
+drive1/lib/adafruit_bme280/__init__.py
+drive1/lib/adafruit_bme280/advanced.py
+drive1/lib/adafruit_bme280/basic.py
+drive1/lib/adafruit_bme280/protocol.py
+drive1/lib/adafruit_bus_device/__init__.py
+drive1/lib/adafruit_bus_device/i2c_device.py
+drive1/lib/adafruit_bus_device/spi_device.py
+drive1/lib/adafruit_ticks.py
+
+$ timeout 60 circup --path drive1 freeze
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Using latest bundle for adafruit/Adafruit_CircuitPython_Bundle (20261031).
+Using latest bundle for adafruit/CircuitPython_Community_Bundle (20261008).
+adafruit_ticks==1.1.7
+adafruit_bme280==2.6.32
+adafruit_bus_device==5.2.17
+(exit 0)
+
+# Asked to stock the drive for code.py's own imports (--auto):
+# code.py imports time, board and digitalio, all built into the
+# firmware, so there is nothing external to find.
+
+$ circup --path drive1 install --py --auto
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Using latest bundle for adafruit/Adafruit_CircuitPython_Bundle (20261031).
+Using latest bundle for adafruit/CircuitPython_Community_Bundle (20261008).
+Finding imports from: code.py
+Searching for dependencies for: []
+Ready to install: []
+(exit 0)

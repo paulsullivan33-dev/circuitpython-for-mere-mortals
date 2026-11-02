@@ -1,0 +1,34 @@
+# t05 - mpy-cross, the compiler the boards' files come from
+
+$ mpy-cross-9.2.8 -o /home/hatch/workspace/circuitpython-labwork/run/code.mpy code.py
+(exit 0)
+
+$ mpy-cross-9.2.8 -o /home/hatch/workspace/circuitpython-labwork/run/sensor_readout.mpy sensor_readout.py
+(exit 0)
+
+$ ls -la code.py sensor_readout.py
+-rw-rw---- 1 root root 414 Nov  2 15:24 code.py
+-rw-rw---- 1 root root 662 Nov  2 15:24 sensor_readout.py
+
+$ ls -la code.mpy sensor_readout.mpy (in the scratch folder)
+-rw-r----- 1 root root 195 Nov  2 15:27 /home/hatch/workspace/circuitpython-labwork/run/code.mpy
+-rw-r----- 1 root root 319 Nov  2 15:27 /home/hatch/workspace/circuitpython-labwork/run/sensor_readout.mpy
+
+$ od -A x -t x1z sensor_readout.mpy | head -2
+000000 43 06 00 1f 0c 08 22 73 65 6e 73 6f 72 5f 72 65  >C....."sensor_re<
+000010 61 64 6f 75 74 2e 70 79 00 0f 2b 2a 63 65 6c 73  >adout.py..+*cels<
+
+# The first byte 0x43 is 'C', the marker of a CircuitPython .mpy;
+# the second byte is the .mpy format version (6 here, from mpy v6.3).
+
+$ mpy-cross-9.2.8 -o /home/hatch/workspace/circuitpython-labwork/run/broken.mpy /home/hatch/workspace/circuitpython-labwork/run/broken.py
+Traceback (most recent call last):
+  File "/home/hatch/workspace/circuitpython-labwork/run/broken.py", line 1
+SyntaxError: invalid syntax
+(exit 1)
+
+$ mpy-cross-9.2.8 -o /home/hatch/workspace/circuitpython-labwork/run/match_demo.mpy /home/hatch/workspace/circuitpython-labwork/run/match_demo.py
+Traceback (most recent call last):
+  File "/home/hatch/workspace/circuitpython-labwork/run/match_demo.py", line 2
+SyntaxError: invalid syntax
+(exit 1)

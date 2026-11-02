@@ -1,0 +1,17 @@
+# t06 - Blinka under ordinary CPython, with no board attached
+
+$ python -
+board_id: GENERIC_LINUX_PC
+names on board: ['MISO', 'MOSI', 'SCL', 'SCLK', 'SDA', 'ap_board', 'board_id', 'board_imports', 'board_key', 'board_module', 'detector', 'f', 'get_import_file', 'import_mod', 'install_missing_platform_dependencies', 'json', 'sys']
+claiming board.LED failed: AttributeError module 'board' has no attribute 'LED'
+WARNING: GENERIC_X86 is not fully supported. Some features may not work.
+WARNING: GENERIC_X86 is not fully supported. Some features may not work.
+opening I2C failed: ImportError cannot import name 'i2cPorts' from 'microcontroller.pin' (/home/hatch/workspace/circuitpython-labwork/venv/lib/python3.12/site-packages/microcontroller/pin.py)
+(exit 0)
+
+# A pure-Python library from the drive's lib/, imported under CPython:
+
+$ env PYTHONPATH=/home/hatch/workspace/circuitpython-labwork/run/drive1/lib python -
+adafruit_ticks 1.1.7 - sum: 4999950000 - ticks elapsed: 2
+adafruit_bme280.basic imported: adafruit_bme280.basic
+(exit 0)

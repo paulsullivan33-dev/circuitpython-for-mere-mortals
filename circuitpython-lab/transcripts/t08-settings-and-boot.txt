@@ -1,0 +1,12 @@
+# t08 - settings.toml and boot.py, checked as far as a desk can
+
+$ python -
+{'CIRCUITPY_WIFI_SSID': 'example-network', 'CIRCUITPY_WIFI_PASSWORD': 'example-password-not-real', 'CIRCUITPY_WEB_API_PORT': 8080}
+(exit 0)
+
+$ python -m py_compile boot.py
+(exit 0)
+
+# On a board, settings.toml is read by CircuitPython itself at
+# startup (Wi-Fi credentials, web workflow) and boot.py runs before
+# code.py. Neither effect can happen without a board: documented-only.

@@ -1,0 +1,31 @@
+# t04 - checking code without a board
+
+$ python check-code.py code.py boot.py sensor_readout.py
+code.py: compiles
+boot.py: compiles
+sensor_readout.py: compiles
+celsius_to_fahrenheit(0.0) = 32.0 (expected 32.0) OK
+celsius_to_fahrenheit(100.0) = 212.0 (expected 212.0) OK
+celsius_to_fahrenheit(-40.0) = -40.0 (expected -40.0) OK
+ALL CHECKS PASSED
+(exit 0)
+
+$ python sensor_readout.py
+air: 21.5 C (70.7 F)
+air: 21.7 C (71.1 F)
+air: 22.0 C (71.6 F)
+water: 18.2 C (64.8 F)
+(exit 0)
+
+# A file with a syntax error, and a CPython-only construction:
+
+$ python -m py_compile /home/hatch/workspace/circuitpython-labwork/run/broken.py
+  File "/home/hatch/workspace/circuitpython-labwork/run/broken.py", line 1
+    def oops(:
+             ^
+SyntaxError: invalid syntax
+(exit 1)
+
+$ python /home/hatch/workspace/circuitpython-labwork/run/match_demo.py
+other
+(exit 0)

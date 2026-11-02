@@ -1,0 +1,5 @@
+# Wi-Fi credentials would go here on a board with Wi-Fi.
+# Invented values only - this network does not exist.
+CIRCUITPY_WIFI_SSID = "example-network"
+CIRCUITPY_WIFI_PASSWORD = "example-password-not-real"
+CIRCUITPY_WEB_API_PORT = 8080

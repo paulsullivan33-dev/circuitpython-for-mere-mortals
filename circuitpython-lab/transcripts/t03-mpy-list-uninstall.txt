@@ -1,0 +1,45 @@
+# t03 - the default form is compiled .mpy; listing and removing
+
+$ timeout 180 circup --path drive2 install adafruit_ticks
+Found device generic_board at drive2, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Using latest bundle for adafruit/Adafruit_CircuitPython_Bundle (20261031).
+Using latest bundle for adafruit/CircuitPython_Community_Bundle (20261008).
+Searching for dependencies for: ['adafruit_ticks']
+Ready to install: ['adafruit_ticks']
+
+Installed 'adafruit_ticks'.
+(exit 0)
+
+$ find drive2/lib -type f | sort
+drive2/lib/adafruit_ticks.mpy
+
+$ timeout 120 circup --path drive1 list
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Using latest bundle for adafruit/Adafruit_CircuitPython_Bundle (20261031).
+Using latest bundle for adafruit/CircuitPython_Community_Bundle (20261008).
+All modules found on the device are up to date.
+(exit 0)
+
+$ echo y | circup --path drive1 uninstall adafruit_ticks
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Uninstalling ('adafruit_ticks',) from drive1
+Uninstalled 'adafruit_ticks'.
+(exit 0)
+
+$ timeout 120 circup --path drive1 install --py adafruit_ticks
+Found device generic_board at drive1, running CircuitPython 9.2.8.
+A newer version of CircuitPython (10.3.1) is available.
+Get it here: https://circuitpython.org/board/generic_board
+Using latest bundle for adafruit/Adafruit_CircuitPython_Bundle (20261031).
+Using latest bundle for adafruit/CircuitPython_Community_Bundle (20261008).
+Searching for dependencies for: ['adafruit_ticks']
+Ready to install: ['adafruit_ticks']
+
+Installed 'adafruit_ticks'.
+(exit 0)
